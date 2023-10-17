@@ -19,7 +19,37 @@ async function create(req, res) {
     }
 }
 
+async function update(req, res) {
+    try {
+        const response = await service.update(req.params.userId, req.body);
+        res.json({ success: true, data: response });
+    } catch(error) {
+        res.status(500).json({ success: false, message: error.message })
+    }
+}
+
+async function getOne(req, res) {
+    try {
+        const response = await service.getOne(req.params.userId);
+        res.json({ success: true, data: response });
+    } catch(error) {
+        res.status(500).json({ success: false, message: error.message })
+    }
+}
+
+async function destroy(req, res) {
+    try {
+        const response = await service.delete(req.params.userId);
+        res.json({ success: true, data: response });
+    } catch(error) {
+        res.status(500).json({ success: false, message: error.message })
+    }
+}
+
 module.exports = {
     getAll,
-    create
+    create,
+    update,
+    getOne,
+    delete: destroy
 }
