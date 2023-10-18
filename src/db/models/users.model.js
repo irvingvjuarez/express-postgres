@@ -13,7 +13,7 @@ const UserSchema = {
     email: {
         allowNull: false,
         type: DataTypes.STRING,
-        field: 'email'
+        unique: true
     },
     password: {
         allowNull: false,

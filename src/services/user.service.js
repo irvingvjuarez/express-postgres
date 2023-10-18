@@ -14,8 +14,8 @@ class UserService {
     }
 
     async create(data) {
-        const response = await models.User.create(data);
-        return response;
+        const newUser = await models.User.create(data);
+        return newUser;
     }
 
     async update(id, data) {
