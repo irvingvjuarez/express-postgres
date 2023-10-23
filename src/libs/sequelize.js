@@ -7,7 +7,6 @@ const sequelize = new Sequelize(Config.dbName, Config.dbUser, Config.dbPassword,
     dialect: 'postgresql'
 })
 
-sequelize.sync();
 setupModels(sequelize);
 
 module.exports = sequelize;
