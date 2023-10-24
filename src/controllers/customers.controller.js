@@ -1,6 +1,6 @@
-const UserService = require('../services/customers.service');
+const CustomerService = require('../services/customers.service');
 
-const service = new UserService();
+const service = new CustomerService();
 
 async function getAll(_req, res) {
     try {
@@ -11,6 +11,16 @@ async function getAll(_req, res) {
     }
 }
 
+async function create(req, res, next) {
+    try {
+        const newUser = await service.create(req.body);
+        res.json({ success: true, data: newUser });
+    } catch(error) {
+        next(error);
+    }
+}
+
 module.exports = {
-    getAll
+    getAll,
+    create
 }
