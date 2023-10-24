@@ -1,7 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const v1Router = require('./v1');
-const { errorHandler, errorLogging } = require('../middlewares/error.handler');
+const { errorHandler, errorLogging, sequelizeErrorHandler } = require('../middlewares/error.handler');
 
 function routing(app) {
     app.use(cors());
@@ -16,6 +16,7 @@ function routing(app) {
 
     // api error middlewares
     app.use(errorLogging);
+    app.use(sequelizeErrorHandler);
     app.use(errorHandler);
 }
 
