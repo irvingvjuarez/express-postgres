@@ -1,4 +1,5 @@
 const { DataTypes, Model } = require("sequelize");
+const { USERS_TABLE_NAME } = require("./users.model");
 
 const CUSTOMER_TABLE_NAME = 'customers';
 
@@ -21,10 +22,23 @@ const CustomerSchema = {
     phone: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    userId: {
+        field: 'user_id',
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: USERS_TABLE_NAME,
+            key: 'id'
+        }
     }
 }
 
 class Customer extends Model {
+    static associate(models) {
+        this.belongsTo(models.User, { as: 'user' })
+    }
+
     static config(sequelize) {
         return {
             sequelize,
