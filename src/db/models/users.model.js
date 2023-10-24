@@ -18,6 +18,11 @@ const UserSchema = {
     password: {
         allowNull: false,
         type: DataTypes.STRING
+    },
+    role: {
+        allowNull: true,
+        type: DataTypes.STRING,
+        defaultValue: 'customer'
     }
 }
 
@@ -27,7 +32,7 @@ class User extends Model {
             sequelize,
             tableName: USERS_TABLE_NAME,
             modelName: 'User',
-            timestamps: true
+            timestamps: false
         }
     }
 }
