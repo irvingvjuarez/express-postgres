@@ -9,3 +9,12 @@ exports.getAll = async function(req, res) {
         res.json({ success: false, error });
     }
 }
+
+exports.create = async function(req, res, next) {
+    try {
+        const newCategory = await service.create(req.body);
+        res.json({ success: true, data: newCategory });
+    } catch(error) {
+        next(error);
+    }
+}
