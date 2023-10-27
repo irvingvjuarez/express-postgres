@@ -2,12 +2,16 @@ const { models } = require('../libs/sequelize');
 
 class ProductsService {
     async getAll() {
-        const response = await models.Product.findAll();
+        const response = await models.Product.findAll({
+            include: ['category']
+        });
         return response;
     }
 
     async getOne(id) {
-        const response = await models.Product.findByPk(id)
+        const response = await models.Product.findByPk(id, {
+            include: ['category']
+        })
         return response;
     }
 

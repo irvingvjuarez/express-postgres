@@ -10,6 +10,15 @@ exports.getAll = async function(req, res) {
     }
 }
 
+exports.getOne = async function(req, res) {
+    try {
+        const category = await service.getOne(req.params.id);
+        res.json({ success: true, data: category })
+    } catch(error) {
+        res.json({ success: false, error });
+    }
+}
+
 exports.create = async function(req, res, next) {
     try {
         const newCategory = await service.create(req.body);

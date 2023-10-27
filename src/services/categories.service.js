@@ -6,6 +6,13 @@ class CategoriesService {
         return response;
     }
 
+    async getOne(id) {
+        const response = await models.Category.findByPk(id, {
+            include: ['products']
+        });
+        return response;
+    }
+
     async create(data) {
         const response = await models.Category.create(data);
         return response;

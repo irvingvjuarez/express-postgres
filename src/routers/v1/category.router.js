@@ -7,6 +7,7 @@ const router = express.Router()
 
 router
     .get('/', CategoryController.getAll)
+    .get('/:id', CategoryController.getOne)
     .post(
         '/', validatorHandler(createCategorySchema, 'body'),
         CategoryController.create
