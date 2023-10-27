@@ -7,6 +7,7 @@ const router = express.Router();
 
 router
     .get('/', ProductsController.getAll)
+    .get('/:id', ProductsController.getOne)
     .post(
         '/', validatorHandler(createProductSchema, 'body'),
         ProductsController.create

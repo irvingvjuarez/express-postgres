@@ -6,6 +6,11 @@ class ProductsService {
         return response;
     }
 
+    async getOne(id) {
+        const response = await models.Product.findByPk(id)
+        return response;
+    }
+
     async create(data) {
         const response = await models.Product.create(data);
         return response;

@@ -10,6 +10,15 @@ exports.getAll = async function(req, res, next) {
     }
 }
 
+exports.getOne = async function(req, res) {
+    try {
+        const user = await service.getOne(req.params.id);
+        res.json({ success: true, data: user })
+    } catch(error) {
+        res.json({ success: false, error })
+    }
+}
+
 exports.create = async function(req, res, next) {
     try {
         const newProduct = await service.create(req.body);
