@@ -15,6 +15,12 @@ class ProductsService {
         const response = await models.Product.create(data);
         return response;
     }
+
+    async update(id, data) {
+        const currentProduct = await models.Product.findByPk(id);
+        const response = currentProduct.update(data)
+        return response;
+    }
 }
 
 module.exports = ProductsService;

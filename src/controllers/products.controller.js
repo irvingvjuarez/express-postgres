@@ -27,3 +27,14 @@ exports.create = async function(req, res, next) {
         next(error)
     }
 }
+
+exports.update = async function(req, res, next) {
+    const { id } = req.params
+
+    try {
+        const updatedProduct = await service.update(id, req.body);
+        res.json({ success: true, data: updatedProduct })
+    } catch(error) {
+        next(error);
+    }
+}

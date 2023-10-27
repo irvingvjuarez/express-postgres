@@ -7,3 +7,11 @@ exports.createProductSchema = Joi.object({
     description: Joi.string().optional(),
     categoryId: Joi.number().integer().required()
 })
+
+exports.updateProductSchema = Joi.object({
+    name: Joi.string().optional(),
+    price: Joi.number().optional(),
+    image: Joi.string().optional(),
+    description: Joi.string().optional(),
+    categoryId: Joi.number().integer().optional()
+})
