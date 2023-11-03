@@ -20,6 +20,15 @@ exports.getOne = async function(req, res, next) {
     }
 }
 
+exports.addItem = async function(req, res, next) {
+    try {
+        const newItem = await service.addItem(req.body);
+        res.json({ success: true, data: newItem });
+    } catch(error) {
+        next(error);
+    }
+}
+
 exports.create = async function(req, res, next) {
     try {
         const newOrder = await service.create(req.body);

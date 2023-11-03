@@ -8,11 +8,16 @@ class OrdersService {
 
     async getOne(id) {
         const response = await models.Order.findByPk(id, {
-            include: {
+            include: [{
                 association: 'customer',
                 include: ['user']
-            }
+            }, 'items']
         });
+        return response;
+    }
+
+    async addItem(data) {
+        const response = await models.OrderProduct.create(data);
         return response;
     }
 

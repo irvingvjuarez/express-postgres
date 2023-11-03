@@ -1,6 +1,6 @@
 const express = require('express');
 const OrderController = require('../../controllers/order.controller');
-const { createOrderSchema, getOrderSchema } = require('../../schemas/order.schema');
+const { createOrderSchema, getOrderSchema, addItemSchema } = require('../../schemas/order.schema');
 const validatorHandler = require('../../middlewares/validator.handler');
 
 const OrdersRouter = express.Router();
@@ -14,6 +14,10 @@ OrdersRouter
     .post(
         '/', validatorHandler(createOrderSchema, 'body'),
         OrderController.create
+    )
+    .post(
+        '/add-item', validatorHandler(addItemSchema, 'body'),
+        OrderController.addItem
     )
 
 module.exports = OrdersRouter;

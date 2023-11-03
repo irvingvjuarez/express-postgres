@@ -7,3 +7,8 @@ exports.createOrderSchema = Joi.object({
 exports.getOrderSchema = Joi.object({
     id: Joi.number().integer().required()
 })
+
+exports.addItemSchema = Joi.object({
+    orderId: Joi.number().integer().required(),
+    productId: Joi.number().integer().required()
+})
