@@ -16,6 +16,14 @@ class UserService {
         return user;
     }
 
+    async findBy(query) {
+        const user = await models.User.findOne({
+            where: query
+        });
+        if (!user) throw boom.unauthorized();
+        return user;
+    }
+
     async create(data) {
         data.password = await bcrypt.hash(data.password, 10);
         const createdUser = await models.User.create(data);
