@@ -11,6 +11,8 @@ async function strategyCallback(email, password, done) {
         const isMismatch = !await compare(password, user.password);
 
         if (isMismatch) throw boom.unauthorized();
+
+        delete user.dataValues.password;
         done(null, user);
     } catch(error) {
         done(error, false);

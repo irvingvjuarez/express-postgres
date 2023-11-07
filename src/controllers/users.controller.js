@@ -31,6 +31,8 @@ async function update(req, res) {
 async function getOne(req, res) {
     try {
         const response = await service.getOne(req.params.userId);
+        delete response.dataValues.password;
+
         res.json({ success: true, data: response });
     } catch(error) {
         res.status(500).json({ success: false, message: error.message })
