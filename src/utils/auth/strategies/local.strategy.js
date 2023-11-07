@@ -17,6 +17,8 @@ async function strategyCallback(email, password, done) {
     }
 }
 
-const LocalStrategy = new Strategy(strategyCallback);
+const LocalStrategy = new Strategy({
+    usernameField: 'email'
+}, strategyCallback);
 
 module.exports = LocalStrategy;

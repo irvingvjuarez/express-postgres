@@ -4,8 +4,10 @@ const CustomerRouter = require('./customers.router');
 const CategoriesRouter = require('./category.router');
 const ProductsRouter = require('./products.router');
 const OrdersRouter = require('./order.router');
+const AuthRouter = require('./auth.router');
 
 const v1Router = express.Router();
+v1Router.use('/auth', AuthRouter)
 v1Router.use('/users', UsersRouter);
 v1Router.use('/customers', CustomerRouter);
 v1Router.use('/categories', CategoriesRouter);

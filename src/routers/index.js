@@ -4,10 +4,14 @@ const v1Router = require('./v1');
 const authorizeHandler = require('../middlewares/authorize.handler');
 const { errorHandler, errorLogging, sequelizeErrorHandler } = require('../middlewares/error.handler');
 const config = require('../config');
+const passport = require('passport');
+
+require('../utils/auth')
 
 function routing(app) {
     app.use(cors());
     app.use(express.json());
+    app.use(passport.initialize());
 
     app.get('/', (req, res) => {
         res.send('Express + Postgres app working');
