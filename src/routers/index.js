@@ -18,7 +18,7 @@ function routing(app) {
     })
 
     // authorization middlewares
-    app.use(authorizeHandler)
+    // app.use(authorizeHandler)
 
     // api versioning
     app.use('/api/v1', v1Router);
