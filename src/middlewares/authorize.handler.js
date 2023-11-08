@@ -9,4 +9,15 @@ function authorizeHandler(req, res, next) {
     }
 }
 
-module.exports = authorizeHandler;
+function roleAuthorizationHandler(req, res, next) {
+    if (req.user.role === 'admin') {
+        next();
+    } else {
+        throw boom.forbidden('Do not have permissions to perform this action');
+    }
+}
+
+module.exports = {
+    authorizeHandler,
+    roleAuthorizationHandler
+};

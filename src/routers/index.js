@@ -1,9 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const v1Router = require('./v1');
-const authorizeHandler = require('../middlewares/authorize.handler');
 const { errorHandler, errorLogging, sequelizeErrorHandler } = require('../middlewares/error.handler');
-const config = require('../config');
 const passport = require('passport');
 
 require('../utils/auth')
