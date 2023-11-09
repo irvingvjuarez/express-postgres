@@ -13,6 +13,7 @@ async function getAll(_req, res) {
 
 async function create(req, res, next) {
     try {
+        if (!req.body.userId) req.body.userId = req.user.sub;
         const newUser = await service.create(req.body);
         res.json({ success: true, data: newUser });
     } catch(error) {
