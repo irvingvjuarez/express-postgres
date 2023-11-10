@@ -19,8 +19,18 @@ exports.login = async function(req, res, next) {
 exports.passwordRecovery = async function(req, res, next) {
     try {
         const {body: {email}} = req
-        await userService.findBy({ email });
-        await mailer(email, 'Password recovery', 'Your password is...', `Your password is: `);
+        const user = await userService.findBy({ email });
+        const token = signToken({sub: user.id}, config.tokenSecret, {
+            expiresIn: '15min'
+        });
+        const recoveryLink = `http://frontend.com/recovery?token=${token}`
+
+        await mailer(
+            email,
+            'Password recovery',
+            `Your password recovery link is ${recoveryLink}`,
+            `Your password recovery link is ${recoveryLink}`
+        );
 
         res.json({ success: true, message: 'Mail sent' })
     } catch(error) {

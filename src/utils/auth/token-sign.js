@@ -6,10 +6,8 @@ const { sign } = require("jsonwebtoken");
 //     role: 'customer'
 // }
 
-function signToken(payload, secret) {
-    return sign(payload, secret, {
-        expiresIn: '7d'
-    });
+function signToken(payload, secret, options) {
+    return sign(payload, secret, options);
 }
 
 module.exports = signToken;
