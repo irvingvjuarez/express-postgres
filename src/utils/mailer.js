@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const config = require("../config");
 
-async function sendMail(to, subject, text, html) {
+async function mailer(to, subject, text, html) {
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       secure: true,
@@ -21,4 +21,4 @@ async function sendMail(to, subject, text, html) {
     });
 }
 
-module.exports = sendMail;
+module.exports = mailer;
