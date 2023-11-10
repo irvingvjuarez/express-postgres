@@ -9,7 +9,9 @@ const config = {
     dbPassword: process.env.DB_PASSWORD,
     dbPort: process.env.DB_PORT,
     apiKey: process.env.API_KEY,
-    tokenSecret: process.env.TOKEN_SECRET
+    tokenSecret: process.env.TOKEN_SECRET,
+    emailHostPassword: process.env.EMAIL_HOST_PASSWORD,
+    emailUser: process.env.EMAIL_USER
 }
 
 module.exports = config;
